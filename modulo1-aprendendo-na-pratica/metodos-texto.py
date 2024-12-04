@@ -24,7 +24,7 @@ print(telefone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "
 print("-".join("Igor"))
 
 #Split - Transforma em um array
-print(nome.split(" "))
+print(nome.split())
 
 #Strip - remove tudo que bate com meu alvo e que está no começo ou fim da minha string
 print(texto.strip("x"))

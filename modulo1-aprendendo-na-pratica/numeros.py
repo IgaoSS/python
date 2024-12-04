@@ -8,7 +8,7 @@ print("Real com ponto flutuante");
 
 # type()
 print("Tipo da variavel inteiro: ", type(numero_inteiro));
-print("Tipo da variavel real: ", type(numero_inteiro));
+print("Tipo da variavel real: ", type(numero_real));
 
 # ======== Operadores aritméticos ========
 num1 = 5;
