@@ -6,10 +6,13 @@ from flask_login import LoginManager, login_user, current_user, logout_user, log
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "your_secret_key"
-app.instance_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance')
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(app.instance_path, 'database.db')}"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-os.makedirs(app.instance_path, exist_ok=True)
+
+#app.instance_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance')
+#app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(app.instance_path, 'database.db')}"
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#os.makedirs(app.instance_path, exist_ok=True)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:admin123@127.0.0.1:3306/flask-crud'
 
 login_manager = LoginManager()
 db.init_app(app)
@@ -46,7 +49,6 @@ def logout():
 
 # Rota de criação de usuário
 @app.route('/user', methods=['POST'])
-@login_required
 def create_user():
   data = request.get_json()
   username = data.get('username')
