@@ -2,7 +2,7 @@ from database import db
 from datetime import datetime
 
 class Diet(db.Model):
-    def __init__(self, id, name, description, date_time, is_on_diet=False):
+    def __init__(self, name, description, date_time, is_on_diet=False, id=None):
         self.id = id
         self.name = name
         self.description = description
