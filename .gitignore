@@ -4,3 +4,4 @@ __pycache__/
 *.py[cod]
 # Ignorar o diretório MySQL
 mysql/
+**/static/img/
