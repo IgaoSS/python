@@ -5,3 +5,5 @@ __pycache__/
 # Ignorar o diretório MySQL
 mysql/
 **/static/img/
+venv
+storage.db
