@@ -10,6 +10,6 @@ repos:
           [
             "-rn",  # Only display messages
             "-sn",  # Don't display the score
-            "--rcfile=modulo7-mvc/.pylintrc",  # Link to your config file
+            "--rcfile=modulo7-mvc/aula/.pylintrc",  # Link to your config file
             "--load-plugins=pylint.extensions.docparams",  # Load an extension
           ]
