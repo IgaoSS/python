@@ -1,9 +1,9 @@
 # pylint: disable=C0114,C0115,C0116,W0703,C0209,E0015,C0304
-#import pytest
+import pytest
 from sqlalchemy.engine import Engine
 from .connection import db_connection_handler
 
-#@pytest.mark.skip(reason="Integração com o banco de dados")
+@pytest.mark.skip(reason="Integração com o banco de dados")
 def test_connect_to_db():
     assert db_connection_handler.get_engine() is None
 
