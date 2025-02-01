@@ -16,6 +16,7 @@ class MockConnection:
                             idade = 23,
                             renda_mensal = 5000.00,
                             celular = "1111-2222",
+                            email = "igor@teste.com",
                             categoria = "Categoria A",
                             saldo = 10000.00
                         )
@@ -27,10 +28,10 @@ class MockConnection:
     def __enter__(self): return self
     def __exit__(self, exc_type, exc_val, exc_tb): pass
 
-def test_list_natural_people():
+def test_list_natural_persons():
     mock_connection = MockConnection()
     repo = NaturalPersonRepository(mock_connection)
-    response = repo.list_natural_people()
+    response = repo.list_natural_persons()
 
     mock_connection.session.query.assert_called_once_with(NaturalPersonTable)
     mock_connection.session.query.assert_called_once()
@@ -65,4 +66,4 @@ def test_view_statement():
     mock_connection.session.query.assert_called_once()
     mock_connection.session.filter.assert_called_once()
 
-    response == {'Nome': 'Igor Sousa', 'Saldo': 10000.0, 'Categoria': 'Categoria A'}
+    assert response == {'Nome': 'Igor Sousa', 'Saldo': 10000.0, 'Categoria': 'Categoria A'}

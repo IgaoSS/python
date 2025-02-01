@@ -9,8 +9,9 @@ class NaturalPersonTable(Base):
     idade = Column(INT, nullable=False)
     nome_completo = Column(String, nullable=False)
     celular = Column(String, nullable=False)
+    email = Column(String, nullable=False)
     categoria = Column(String, nullable=False)
     saldo = Column(REAL, nullable=False)
 
     def __repr__(self):
-        return f"pessoa_fisica [nome_completo={self.nome_completo}, celular={self.celular}, categoria={self.categoria}, renda_mensal={self.renda_mensal}, saldo={self.saldo}]"
+        return f"pessoa_fisica [nome_completo={self.nome_completo}, celular={self.celular}, email={self.email}, categoria={self.categoria}, renda_mensal={self.renda_mensal}, saldo={self.saldo}]"

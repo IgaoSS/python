@@ -8,7 +8,7 @@ class NaturalPersonRepository:
     def __init__(self, db_connection) -> None:
         self.__db_connection = db_connection
 
-    def insert_natural_person(self, nome_completo: str, renda_mensal: float, idade: int, celular: str, categoria: str, saldo: float) -> None:
+    def insert_natural_person(self, nome_completo: str, renda_mensal: float, idade: int, celular: str, email: str, categoria: str, saldo: float) -> None:
         with self.__db_connection as database:
             try:
                 person_data = NaturalPersonTable(
@@ -16,6 +16,7 @@ class NaturalPersonRepository:
                     renda_mensal=renda_mensal,
                     idade=idade,
                     celular=celular,
+                    email=email,
                     categoria=categoria,
                     saldo=saldo
                 )
@@ -25,11 +26,11 @@ class NaturalPersonRepository:
                 database.session.rollback()
                 raise exception
 
-    def list_natural_people(self) -> List[NaturalPersonTable]:
+    def list_natural_persons(self) -> List[NaturalPersonTable]:
         with self.__db_connection as database:
             try:
-                natural_people = database.session.query(NaturalPersonTable).all()
-                return natural_people
+                natural_persons = database.session.query(NaturalPersonTable).all()
+                return natural_persons
             except NoResultFound:
                 return []
 
@@ -37,15 +38,15 @@ class NaturalPersonRepository:
         try:
             daily_limit = 2000.00
 
-            saldo = self.check_balance(natural_person_id)
+            balance = self.check_balance(natural_person_id)
 
             if quantify > daily_limit:
                 return "ERRO: Saque ultrapassa o limite permitido!"
 
-            if quantify > saldo:
+            if quantify > balance:
                 return "ERRO: Saldo não disponível para saque!"
 
-            new_balance = saldo - quantify
+            new_balance = balance - quantify
             self.update_balance(natural_person_id, new_balance)
             return f"Saque de R$ {quantify} realizado com sucesso. Saldo atualizado: R$ {new_balance}"
 
