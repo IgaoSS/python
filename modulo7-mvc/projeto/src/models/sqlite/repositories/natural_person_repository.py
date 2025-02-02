@@ -2,9 +2,9 @@
 from typing import List
 from sqlalchemy.orm.exc import NoResultFound
 from src.models.sqlite.entities.natural_person import NaturalPersonTable
-from src.models.sqlite.interfaces.client_repository import ClientRepositoryInterface
+from src.models.sqlite.interfaces.natural_person_repository import NaturalPersonRepositoryInterface
 
-class NaturalPersonRepository(ClientRepositoryInterface):
+class NaturalPersonRepository(NaturalPersonRepositoryInterface):
     def __init__(self, db_connection) -> None:
         self.__db_connection = db_connection
 
@@ -90,6 +90,9 @@ class NaturalPersonRepository(ClientRepositoryInterface):
                     .filter(NaturalPersonTable.id == person_id)
                     .first()
                 )
+
+                if not person:
+                    return "ERRO: Conta não encontrada!"
 
                 return {
                     "Nome": person.nome_completo,

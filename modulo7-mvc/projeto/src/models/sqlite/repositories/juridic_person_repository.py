@@ -2,9 +2,9 @@
 from typing import List
 from sqlalchemy.orm.exc import NoResultFound
 from src.models.sqlite.entities.juridic_person import JuridicPersonTable
-from src.models.sqlite.interfaces.client_repository import ClientRepositoryInterface
+from src.models.sqlite.interfaces.juridic_person_repository import JuridicPersonRepositoryInterface
 
-class JuridicPersonRepository(ClientRepositoryInterface):
+class JuridicPersonRepository(JuridicPersonRepositoryInterface):
     def __init__(self, db_connection) -> None:
         self.__db_connection = db_connection
 
