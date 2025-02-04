@@ -23,7 +23,7 @@ class NaturalPersonCreatorController(NaturalPersonCreatorControllerInterface):
         return formatted_response
 
     def __validate_name(self, nome_completo: str) -> None:
-        non_valid_characters = re.compile(r'[a-zA-Z\s]')
+        non_valid_characters = re.compile(r'[^a-zA-Z\s]')
 
         if non_valid_characters.search(nome_completo):
             raise ValueError("Nome da pessoa inválido!")

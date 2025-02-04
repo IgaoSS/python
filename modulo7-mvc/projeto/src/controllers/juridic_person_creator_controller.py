@@ -8,13 +8,13 @@ class JuridicPersonCreatorController(JuridicPersonCreatorControllerInterface):
         self.__juridic_person_repository = juridic_person_repository
 
     def create_user(self, person_info: Dict) -> Dict:
-        nome_fantasia = ["nome_fantasia"]
-        idade = ["idade"]
-        celular = ["celular"]
-        email_corporativo = ["email_corporativo"]
-        faturamento = ["faturamento"]
-        categoria = ["categoria"]
-        saldo = ["saldo"]
+        nome_fantasia = person_info["nome_fantasia"]
+        idade = person_info["idade"]
+        celular = person_info["celular"]
+        email_corporativo = person_info["email_corporativo"]
+        faturamento = person_info["faturamento"]
+        categoria = person_info["categoria"]
+        saldo = person_info["saldo"]
 
         self.__insert_person_in_db(nome_fantasia, idade, celular, email_corporativo, faturamento, categoria, saldo)
         formatted_response = self.__format_response(person_info)

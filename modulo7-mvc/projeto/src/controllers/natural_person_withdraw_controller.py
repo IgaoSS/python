@@ -22,7 +22,7 @@ class NaturalPersonWithdrawController(NaturalPersonWithdrawControllerInterface):
     def __format_response(self, message: str) -> Dict:
         return {
             "data": {
-                "type": "Juridic Person",
+                "type": "Natural Person",
                 "count": 1,
                 "attributes": {
                     "message": message
