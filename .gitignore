@@ -7,3 +7,4 @@ mysql/
 **/static/img/
 venv
 storage.db
+.env
